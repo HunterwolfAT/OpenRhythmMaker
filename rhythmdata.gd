@@ -19,13 +19,13 @@ func _ready():
 
 func _process(delta):
 	acc += delta
-	if (acc > limit):
+	if (acc > 1 && !beatplayed):
 		get_node("Position2D/big").beat()
 		get_node("Position2D 2/smol").beat()
-	if (acc > limit + tolerance):
-		get_node("Position2D/big").set_modulate(Color(0.5, 1.0, 0.5)) # make green
 		beatplayed = true;
-	if (acc > limit + tolerance*2):
+	if (acc > 1.1):
+		get_node("Position2D/big").set_modulate(Color(0.5, 1.0, 0.5)) # make green
+	if (acc > 1.4):
 		get_node("Position2D/big").set_modulate(Color(1, 1, 1)) # make normal
 		acc = 0
 		beatplayed = false;
